@@ -22,17 +22,18 @@ import java.util.HashMap;
  */
 @Path("")
 public class Startside {
-    
+    public static galgeleg.GalgelogikImplService service;
+    public static galgeleg.Galgelogik spil;
     @GET
     public String getIndexHtml() throws IOException {
+        service = new galgeleg.GalgelogikImplService();
+        spil = service.getGalgelogikImplPort();
         //Initialize Mustache renderer
         MustacheFactory mf = new DefaultMustacheFactory();
         Mustache m = mf.compile("startside.mustache");
-
-        Todo todo = new Todo("Simon er dum", "Description");
         
         HashMap<String, Object> data = new HashMap<String, Object>();
-        data.put("todo", todo);
+        data.put("lol", "lol");
         
         StringWriter writer = new StringWriter();
         m.execute(writer, data).flush();
